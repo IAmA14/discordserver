@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Our Servers</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: system-ui, sans-serif;
+      background-color: black;
+      color: #e7e7e7;
+      min-height: 100vh;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 5rem;
+    }
+
+    .logo {
+      font-size: 2rem;
+    }
+
+    nav a {
+      color: white;
+      margin-left: 20px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .page-title {
+      font-size: 2.5rem;
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .server-container {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      flex-wrap: wrap;
+      padding: 20px;
+    }
+
+    .server-box {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      opacity: 0;
+      animation: fadeIn 1s ease forwards;
+    }
+
+    .server-box:nth-child(2) {
+      animation-delay: 0.5s;
+    }
+
+    .server-box h2 {
+      margin-bottom: 10px;
+    }
+
+    .server-box iframe {
+      border-radius: 10px;
+      transition: all 0.3s ease;
+      box-shadow: 0 0 0 transparent;
+    }
+
+    .server-box iframe:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 25px rgba(0, 162, 255, 0.6);
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .join-btn {
+      margin-top: 10px;
+      padding: 10px 25px;
+      background-color: #007bff;
+      color: white;
+      font-weight: bold;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 0 0 transparent;
+    }
+
+    .join-btn:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 25px rgba(0, 162, 255, 0.6);
+      background-color: #339cff;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1 class="logo">PTN</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="our-servers.html">Our Servers</a>
+    </nav>
+  </header>
+
+  <main>
+    <h1 class="page-title">Our Servers</h1>
+    <div class="server-container">
+
+      <!-- Zautuan Server -->
+      <div class="server-box">
+        <h2>Zautuan's Server</h2>
+        <iframe 
+          src="https://discord.com/widget?id=1362052203048599795&theme=dark" 
+          width="350" 
+          height="500" 
+          allowtransparency="true" 
+          frameborder="0" 
+          sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts">
+        </iframe>
+        <button class="join-btn" onclick="window.location.href='https://discord.gg/6jnTFtPwPS'">Join Server</button>
+      </div>
+
+      <!-- Puatuan Server -->
+      <div class="server-box">
+        <h2>Puatuan's Server</h2>
+        <iframe 
+          src="https://discord.com/widget?id=1368507828003934279&theme=dark" 
+          width="350" 
+          height="500" 
+          allowtransparency="true" 
+          frameborder="0" 
+          sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts">
+        </iframe>
+        <button class="join-btn" onclick="window.location.href='https://discord.gg/invite/DhgUjrErkw'">Join Server</button>
+      </div>
+
+    </div>
+  </main>
+
+</body>
+</html>
