@@ -17,8 +17,7 @@
       background-color: black;
       color: #e7e7e7;
       min-height: 100vh;
-      opacity: 0;
-      transition: opacity 2s ease-in;
+      opacity: 1;
     }
 
     header {
@@ -26,10 +25,13 @@
       justify-content: space-between;
       align-items: center;
       padding: 1rem 5rem;
+      position: relative;
     }
 
     .logo {
       font-size: 2rem;
+      position: relative;
+      z-index: 2;
     }
 
     nav a {
@@ -126,11 +128,6 @@
   </style>
 </head>
 <body>
-  <audio id="bg-music" autoplay loop muted>
-    <source src="https://cdn.pixabay.com/download/audio/2022/03/14/audio_631775c03c.mp3?filename=short-meditation-music-3-minute-relaxation-calming-346305.mp3" type="audio/mp3">
-    Your browser does not support the audio element.
-  </audio>
-
   <header>
     <h1 class="logo">PTN</h1>
     <nav>
@@ -142,45 +139,18 @@
   <main>
     <h1 class="page-title">Our Servers</h1>
     <div class="server-container">
-      <div id="zautuan-server" class="server-box">
+      <div id="zautuan-server" class="server-box fade-in-left">
         <h2>Zautuan's Server</h2>
         <iframe src="https://discord.com/widget?id=1362052203048599795&theme=dark" width="350" height="500" allowtransparency="true" frameborder="0" sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"></iframe>
         <a href="https://discord.gg/6jnTFtPwPS" class="join-button">Join Server</a>
       </div>
 
-      <div id="puatuan-server" class="server-box">
+      <div id="puatuan-server" class="server-box fade-in-right">
         <h2>Puatuan's Server</h2>
         <iframe src="https://discord.com/widget?id=1368507828003934279&theme=dark" width="350" height="500" allowtransparency="true" frameborder="0" sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"></iframe>
         <a href="https://discord.gg/invite/DhgUjrErkw" class="join-button">Join Server</a>
       </div>
     </div>
   </main>
-
-  <script>
-    window.addEventListener('load', () => {
-      document.body.style.opacity = '1';
-
-      const zautuan = document.getElementById('zautuan-server');
-      const puatuan = document.getElementById('puatuan-server');
-
-      zautuan.classList.add('fade-in-left');
-      puatuan.classList.add('fade-in-right');
-
-      const audio = document.getElementById('bg-music');
-      audio.muted = false;
-      audio.volume = 0;
-      let vol = 0;
-      const fadeIn = setInterval(() => {
-        if (vol < 0.3) {
-          vol += 0.01;
-          audio.volume = vol;
-        } else {
-          clearInterval(fadeIn);
-        }
-      }, 100);
-
-      audio.play().catch(e => console.log('Autoplay blocked:', e));
-    });
-  </script>
 </body>
 </html>
