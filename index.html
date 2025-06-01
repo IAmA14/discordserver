@@ -125,14 +125,15 @@
     });
 
     const counter = document.querySelector('.online-counter');
-    let fakeUsers = Math.floor(Math.random() * 5000) + 10000;
+    let fakeUsers = Math.floor(Math.random() * 90000) + 10000; // random between 10k-100k
 
     function updateUsers() {
       const change = Math.floor(Math.random() * 101); // 0 - 100
       const direction = Math.random() < 0.5 ? -1 : 1;
-      const newCount = fakeUsers + (change * direction);
+      let newCount = fakeUsers + (change * direction);
+      newCount = Math.min(100000, Math.max(0, newCount));
       const animationClass = (newCount > fakeUsers) ? 'up' : 'down';
-      fakeUsers = Math.max(0, newCount);
+      fakeUsers = newCount;
 
       counter.classList.remove('up', 'down');
       void counter.offsetWidth; // trigger reflow
@@ -140,7 +141,7 @@
       counter.textContent = `🔵 ${fakeUsers.toLocaleString()} users currently online`;
     }
 
-    setInterval(updateUsers, 1); // every millisecond
+    setInterval(updateUsers, 1);
   </script>
 </body>
 </html>
