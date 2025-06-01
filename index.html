@@ -7,33 +7,37 @@
   <link rel="stylesheet" href="style.css">
   <style>
     .online-counter {
-      position: fixed;
-      top: 0;
+      position: absolute;
+      top: 50%;
       left: 50%;
-      transform: translateX(-50%);
+      transform: translate(-50%, -50%);
       background: rgba(0, 225, 255, 0.1);
       color: #00e1ff;
       font-weight: bold;
-      padding: 8px 16px;
-      border-radius: 0 0 12px 12px;
-      font-size: 1.1rem;
+      padding: 6px 14px;
+      border-radius: 10px;
+      font-size: 1rem;
       backdrop-filter: blur(10px);
       box-shadow: 0 4px 12px rgba(0, 229, 255, 0.3);
-      z-index: 99;
+      z-index: 100;
       text-align: center;
+    }
+
+    header {
+      position: relative;
     }
   </style>
 </head>
 <body>
-  <div class="online-counter">🔵 12,384 users currently online</div>
-  <button id="theme-toggle" title="Toggle Theme">🌞</button>
-
   <header>
+    <div class="online-counter">🔵 12,384 users currently online</div>
     <h1 class="logo">PTN</h1>
     <nav>
       <a href="index.html">Home</a>
     </nav>
   </header>
+
+  <button id="theme-toggle" title="Toggle Theme">🌞</button>
 
   <main>
     <h1 class="page-title">Our Servers/Collaborators</h1>
@@ -68,12 +72,17 @@
     });
 
     const counter = document.querySelector('.online-counter');
+    let fakeUsers = Math.floor(Math.random() * 5000) + 10000;
+
     function updateUsers() {
-      const fakeUsers = Math.floor(Math.random() * 5000) + 10000;
+      const change = Math.floor(Math.random() * 101); // 0 - 100
+      const direction = Math.random() < 0.5 ? -1 : 1;
+      fakeUsers += change * direction;
+      if (fakeUsers < 0) fakeUsers = 0;
       counter.textContent = `🔵 ${fakeUsers.toLocaleString()} users currently online`;
     }
-    updateUsers();
-    setInterval(updateUsers, 120000); // every 2 minutes
+
+    setInterval(updateUsers, 1000); // every second
   </script>
 </body>
 </html>
