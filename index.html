@@ -2,63 +2,33 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Collaborators</title>
   <style>
     body {
       background: #010a13;
       color: #00e1ff;
       font-family: system-ui, sans-serif;
-      margin: 0; padding: 0;
+      margin: 0;
+      padding: 0;
       min-height: 100vh;
       overflow-x: hidden;
     }
 
-    .online-counter {
-      position: fixed;
-      top: 10px;
-      left: 50%;
-      transform: translateX(-50%);
-      background: rgba(0, 225, 255, 0.1);
-      color: #00e1ff;
-      font-weight: bold;
-      padding: 6px 14px;
-      border-radius: 10px;
-      font-size: 1rem;
-      backdrop-filter: blur(10px);
-      box-shadow: 0 4px 12px rgba(0, 229, 255, 0.3);
-      z-index: 1000;
-      text-align: center;
-      transition: transform 0.2s ease, opacity 0.2s ease;
-    }
-    .online-counter.up, .online-counter.down {
-      animation: counterPulse 0.2s ease;
-    }
-    @keyframes counterPulse {
-      0% {
-        transform: translateX(-50%) scale(1.05);
-        opacity: 0.7;
-      }
-      100% {
-        transform: translateX(-50%) scale(1);
-        opacity: 1;
-      }
-    }
-
     header {
-      position: relative;
-      padding: 50px 20px 20px;
+      padding: 40px 60px 20px;
       display: flex;
-      align-items: center;
       justify-content: space-between;
+      align-items: center;
       background: #011621;
-      box-shadow: 0 0 20px rgba(0, 229, 255, 0.3);
+      box-shadow: 0 0 25px rgba(0, 229, 255, 0.3);
     }
 
     .logo {
       font-weight: bold;
       font-size: 1.8rem;
       text-shadow: 0 0 10px #00e1ff;
+      color: #00e1ff;
     }
 
     nav a {
@@ -69,53 +39,34 @@
       text-shadow: 0 0 6px #00e1ff;
     }
 
-    #theme-toggle {
-      position: fixed;
-      top: 70px;
-      left: 20px;
-      background: rgba(0, 225, 255, 0.15);
-      border: 2px solid #00e1ff;
-      border-radius: 50%;
-      width: 45px;
-      height: 45px;
-      font-size: 1.2rem;
-      color: #00e1ff;
-      cursor: pointer;
-      box-shadow: 0 0 12px rgba(0, 229, 255, 0.4);
-      backdrop-filter: blur(6px);
-      transition: transform 0.2s ease, box-shadow 0.3s ease;
-      z-index: 200;
-    }
-    #theme-toggle:hover {
-      transform: scale(1.15);
-      box-shadow: 0 0 20px rgba(0, 229, 255, 0.8);
-    }
-
     main {
       max-width: 960px;
-      margin: 40px auto 60px;
+      margin: 30px auto 60px;
       padding: 0 20px;
     }
 
     .page-title {
       font-size: 2rem;
-      margin-bottom: 20px;
+      margin-bottom: 30px;
       text-align: center;
       font-weight: bold;
-      text-shadow: 0 0 15px #00e1ff;
+      text-shadow: 0 0 20px #00e1ff;
+      color: #00e1ff;
     }
 
     .server-container {
       display: flex;
-      flex-wrap: wrap;
-      gap: 30px;
       justify-content: center;
+      gap: 50px;
+      flex-wrap: nowrap;
+      margin: 0 auto;
+      max-width: 960px;
     }
 
     .server-box {
       background: #011621;
-      border-radius: 12px;
-      box-shadow: 0 0 15px rgba(0, 229, 255, 0.3);
+      border-radius: 15px;
+      box-shadow: 0 0 30px rgba(0, 229, 255, 0.4);
       padding: 20px;
       width: 320px;
       display: flex;
@@ -125,8 +76,9 @@
       transition: box-shadow 0.3s ease, transform 0.3s ease;
       cursor: default;
     }
+
     .server-box:hover {
-      box-shadow: 0 0 40px #00e1ff;
+      box-shadow: 0 0 60px #00e1ff;
       transform: scale(1.05);
     }
 
@@ -134,42 +86,53 @@
       margin-bottom: 15px;
       font-size: 1.3rem;
       text-align: center;
-      text-shadow: 0 0 10px #00e1ff;
+      text-shadow: 0 0 12px #00e1ff;
+      color: #00e1ff;
     }
 
     iframe {
       border-radius: 15px;
       width: 100%;
-      height: 240px;
+      height: 280px;
       border: none;
-      box-shadow: inset 0 0 20px rgba(0, 162, 255, 0.4);
+      box-shadow: inset 0 0 30px rgba(0, 162, 255, 0.5);
       transition: box-shadow 0.3s ease;
     }
+
     iframe:hover {
-      box-shadow: inset 0 0 35px #00e1ff;
+      box-shadow: inset 0 0 45px #00e1ff;
     }
 
     .join-button {
       margin-top: 18px;
       background-color: #00e1ff;
       border: none;
-      padding: 12px 30px;
+      padding: 14px 35px;
       font-weight: bold;
       color: #000;
       border-radius: 30px;
       cursor: pointer;
-      box-shadow: 0 0 20px #00e1ff;
+      box-shadow: 0 0 35px #00e1ff;
       text-decoration: none;
       text-align: center;
       transition: background-color 0.3s ease, box-shadow 0.3s ease;
       user-select: none;
     }
+
     .join-button:hover {
       background-color: #00b8d9;
-      box-shadow: 0 0 30px #00b8d9;
+      box-shadow: 0 0 40px #00b8d9;
     }
 
     /* Responsive */
+    @media (max-width: 1024px) {
+      .server-container {
+        flex-wrap: wrap;
+        gap: 40px;
+        justify-content: center;
+      }
+    }
+
     @media (max-width: 420px) {
       .server-box {
         width: 100%;
@@ -178,7 +141,6 @@
   </style>
 </head>
 <body>
-  <div class="online-counter">🔵 12,384 users currently online</div>
   <header>
     <div class="logo">PTN</div>
     <nav>
@@ -186,21 +148,21 @@
     </nav>
   </header>
 
-  <button id="theme-toggle" title="Toggle Theme">🌞</button>
-
   <main>
     <h1 class="page-title">Our Servers/Collaborators</h1>
-    <div class="server-container" id="server-container">
-      <div id="zautuan-server" class="server-box">
+    <div class="server-container">
+      <div class="server-box">
         <h2>Zautuan's Server</h2>
         <iframe src="https://discord.com/widget?id=1362052203048599795&theme=dark" allowtransparency="true" frameborder="0" sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"></iframe>
         <a href="https://discord.gg/6jnTFtPwPS" class="join-button" target="_blank" rel="noopener noreferrer">Join Server</a>
       </div>
+
       <div class="server-box">
         <h2>Puatuan's Server</h2>
         <iframe src="https://discord.com/widget?id=1368507828003934279&theme=dark" allowtransparency="true" frameborder="0" sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"></iframe>
         <a href="https://discord.gg/invite/DhgUjrErkw" class="join-button" target="_blank" rel="noopener noreferrer">Join Server</a>
       </div>
+
       <div class="server-box">
         <h2>Manifest | Lost Voyages</h2>
         <iframe src="https://discord.com/widget?id=1354620175407907009&theme=dark" allowtransparency="true" frameborder="0" sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"></iframe>
@@ -208,33 +170,5 @@
       </div>
     </div>
   </main>
-
-  <script>
-    const toggleButton = document.getElementById("theme-toggle");
-    const body = document.body;
-
-    toggleButton.addEventListener("click", () => {
-      body.classList.toggle("light-mode");
-      toggleButton.textContent = body.classList.contains("light-mode") ? "🌙" : "🌞";
-    });
-
-    const counter = document.querySelector(".online-counter");
-    let fakeUsers = Math.floor(Math.random() * 90000) + 10000;
-
-function updateUsers() {
-  const direction = Math.random() < 0.5 ? -1 : 1;
-  let newCount = fakeUsers + direction * 1; // only +1 or -1
-  newCount = Math.min(100000, Math.max(0, newCount));
-  const animationClass = newCount > fakeUsers ? "up" : "down";
-  fakeUsers = newCount;
-
-  counter.classList.remove("up", "down");
-  void counter.offsetWidth;
-  counter.classList.add(animationClass);
-  counter.textContent = `🔵 ${fakeUsers.toLocaleString()} users currently online`;
-}
-
-    setInterval(updateUsers, 520);
-  </script>
 </body>
 </html>
