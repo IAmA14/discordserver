@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <title>Collaborators & Apply</title>
+  <title>Collaborators</title>
   <style>
     body {
       background: #010a13;
@@ -65,22 +65,6 @@
       font-weight: bold;
       text-decoration: none;
       font-size: 1rem;
-    }
-
-    #apply-button {
-      background-color: #00e1ff;
-      color: #000;
-      padding: 8px 15px;
-      font-weight: bold;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      box-shadow: 0 0 10px #00e1ff;
-      transition: background-color 0.3s ease;
-    }
-    #apply-button:hover {
-      background-color: #00b8d9;
-      box-shadow: 0 0 20px #00b8d9;
     }
 
     #theme-toggle {
@@ -181,80 +165,10 @@
       box-shadow: 0 0 25px #00b8d9;
     }
 
-    /* Application form styles */
-    #application-section {
-      margin-top: 60px;
-      background: rgba(0, 225, 255, 0.1);
-      max-width: 360px;
-      margin-left: auto;
-      margin-right: auto;
-      padding: 25px 30px;
-      border-radius: 16px;
-      box-shadow: 0 0 20px rgba(0, 229, 255, 0.6);
-      display: none;
-      flex-direction: column;
-      color: #fff;
-    }
-
-    #application-section label {
-      font-weight: bold;
-      font-size: 0.95rem;
-      margin-top: 10px;
-      text-shadow: 0 0 8px #00e1ff;
-    }
-
-    #application-section input {
-      padding: 10px;
-      border-radius: 8px;
-      border: none;
-      font-size: 1rem;
-      margin-top: 6px;
-      background: rgba(255 255 255 / 0.1);
-      color: #00e1ff;
-      box-shadow: inset 0 0 10px #00e1ff;
-      outline: none;
-      transition: background 0.3s ease;
-    }
-    #application-section input:focus {
-      background: rgba(0, 229, 255, 0.25);
-      box-shadow: 0 0 15px #00e1ff;
-    }
-
-    #application-section button {
-      margin-top: 20px;
-      background-color: #00e1ff;
-      border: none;
-      border-radius: 14px;
-      padding: 12px;
-      font-weight: bold;
-      font-size: 1.1rem;
-      cursor: pointer;
-      box-shadow: 0 0 20px #00e1ff;
-      transition: background-color 0.3s ease, box-shadow 0.3s ease;
-      color: #000;
-    }
-    #application-section button:hover {
-      background-color: #00b8d9;
-      box-shadow: 0 0 30px #00b8d9;
-    }
-
-    #success-msg {
-      font-size: 0.9rem;
-      margin-top: 10px;
-      text-align: center;
-      color: #32cd32;
-      display: none;
-      text-shadow: 0 0 6px #32cd32;
-    }
-
     /* Responsive */
     @media (max-width: 420px) {
       .server-box {
         width: 100%;
-      }
-      #application-section {
-        width: 90%;
-        padding: 20px;
       }
     }
   </style>
@@ -266,7 +180,6 @@
     <nav>
       <a href="index.html">Home</a>
     </nav>
-    <button id="apply-button">Apply</button>
   </header>
 
   <button id="theme-toggle" title="Toggle Theme">🌞</button>
@@ -290,107 +203,16 @@
         <a href="https://discord.gg/t3bVeZV5EQ" class="join-button">Join Server</a>
       </div>
     </div>
-
-    <section id="application-section">
-      <h2>Apply to Collaborate</h2>
-      <form id="application-form">
-        <label for="server-widget">Question 1: Paste your Discord server widget iframe URL</label>
-        <input type="text" id="server-widget" required placeholder="https://discord.com/widget?id=123456789012345678&theme=dark" />
-
-        <label for="server-link">Question 2: Insert your Discord server invite link</label>
-        <input type="text" id="server-link" required placeholder="https://discord.gg/yourinvite" />
-
-        <label for="server-name">Question 3: Insert your Discord server name</label>
-        <input type="text" id="server-name" required placeholder="My Awesome Server" />
-
-        <button type="submit" id="submit-btn">SUBMIT</button>
-        <div id="success-msg">Success, redirecting...</div>
-      </form>
-    </section>
   </main>
 
   <script>
     const toggleButton = document.getElementById("theme-toggle");
     const body = document.body;
-    const applyButton = document.getElementById("apply-button");
-    const applicationSection = document.getElementById("application-section");
-    const container = document.getElementById("server-container");
-    const form = document.getElementById("application-form");
-    const submitBtn = document.getElementById("submit-btn");
-    const successMsg = document.getElementById("success-msg");
 
-    // Theme toggle
     toggleButton.addEventListener("click", () => {
       body.classList.toggle("light-mode");
       toggleButton.textContent = body.classList.contains("light-mode") ? "🌙" : "🌞";
     });
-
-    // Show/hide apply form scroll to it
-    applyButton.addEventListener("click", () => {
-      if (applicationSection.style.display === "flex") {
-        applicationSection.style.display = "none";
-      } else {
-        applicationSection.style.display = "flex";
-        applicationSection.scrollIntoView({ behavior: "smooth" });
-      }
-    });
-
-    // Load saved servers from localStorage on page load
-    function loadSavedServers() {
-      const saved = localStorage.getItem('customServers');
-      if (!saved) return;
-      const servers = JSON.parse(saved);
-      servers.forEach(({ name, widget, link }) => {
-        const box = document.createElement("div");
-        box.className = "server-box fade-in-left";
-        box.innerHTML = `
-          <h2>${name}</h2>
-          <iframe src="${widget}" allowtransparency="true" frameborder="0" sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"></iframe>
-          <a href="${link}" class="join-button" target="_blank" rel="noopener noreferrer">Join Server</a>
-        `;
-        container.appendChild(box);
-      });
-    }
-
-    // Call to load saved servers immediately
-    loadSavedServers();
-
-    // Form submission with localStorage persistence
-    form.onsubmit = function(e) {
-      e.preventDefault();
-
-      const name = document.getElementById("server-name").value.trim();
-      const link = document.getElementById("server-link").value.trim();
-      const widget = document.getElementById("server-widget").value.trim();
-
-      if (!name || !link || !widget) return;
-
-      submitBtn.disabled = true;
-      successMsg.style.display = "block";
-
-      // Save to localStorage
-      let savedServers = JSON.parse(localStorage.getItem('customServers') || '[]');
-      savedServers.push({ name, widget, link });
-      localStorage.setItem('customServers', JSON.stringify(savedServers));
-
-      // Create and append new server box
-      const box = document.createElement("div");
-      box.className = "server-box fade-in-left";
-      box.innerHTML = `
-        <h2>${name}</h2>
-        <iframe src="${widget}" allowtransparency="true" frameborder="0" sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"></iframe>
-        <a href="${link}" class="join-button" target="_blank" rel="noopener noreferrer">Join Server</a>
-      `;
-      container.appendChild(box);
-
-      setTimeout(() => {
-        form.reset();
-        applicationSection.style.display = "none";
-        successMsg.style.display = "none";
-        submitBtn.disabled = false;
-        box.scrollIntoView({ behavior: "smooth" });
-      }, 1500);
-    };
 
     // Fake user count
     const counter = document.querySelector(".online-counter");
