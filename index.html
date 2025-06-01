@@ -17,7 +17,12 @@
       background-color: black;
       color: #e7e7e7;
       min-height: 100vh;
-      opacity: 1;
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    body.light-mode {
+      background-color: #ffffff;
+      color: #121212;
     }
 
     header {
@@ -35,7 +40,7 @@
     }
 
     nav a {
-      color: white;
+      color: inherit;
       margin-left: 20px;
       text-decoration: none;
       font-weight: bold;
@@ -125,9 +130,28 @@
         transform: translateX(0);
       }
     }
+
+    #theme-toggle {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      font-size: 1.5rem;
+      cursor: pointer;
+      background: none;
+      border: none;
+      color: inherit;
+      z-index: 999;
+      transition: transform 0.3s;
+    }
+
+    #theme-toggle:hover {
+      transform: scale(1.2);
+    }
   </style>
 </head>
 <body>
+  <button id="theme-toggle" title="Toggle Theme">🌞</button>
+
   <header>
     <h1 class="logo">PTN</h1>
     <nav>
@@ -157,5 +181,15 @@
       </div>
     </div>
   </main>
+
+  <script>
+    const toggleButton = document.getElementById("theme-toggle");
+    const body = document.body;
+
+    toggleButton.addEventListener("click", () => {
+      body.classList.toggle("light-mode");
+      toggleButton.textContent = body.classList.contains("light-mode") ? "🌙" : "🌞";
+    });
+  </script>
 </body>
 </html>
