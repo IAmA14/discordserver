@@ -335,7 +335,27 @@
       }
     });
 
-    // Form submission
+    // Load saved servers from localStorage on page load
+    function loadSavedServers() {
+      const saved = localStorage.getItem('customServers');
+      if (!saved) return;
+      const servers = JSON.parse(saved);
+      servers.forEach(({ name, widget, link }) => {
+        const box = document.createElement("div");
+        box.className = "server-box fade-in-left";
+        box.innerHTML = `
+          <h2>${name}</h2>
+          <iframe src="${widget}" allowtransparency="true" frameborder="0" sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"></iframe>
+          <a href="${link}" class="join-button" target="_blank" rel="noopener noreferrer">Join Server</a>
+        `;
+        container.appendChild(box);
+      });
+    }
+
+    // Call to load saved servers immediately
+    loadSavedServers();
+
+    // Form submission with localStorage persistence
     form.onsubmit = function(e) {
       e.preventDefault();
 
@@ -348,7 +368,12 @@
       submitBtn.disabled = true;
       successMsg.style.display = "block";
 
-      // Create new server box
+      // Save to localStorage
+      let savedServers = JSON.parse(localStorage.getItem('customServers') || '[]');
+      savedServers.push({ name, widget, link });
+      localStorage.setItem('customServers', JSON.stringify(savedServers));
+
+      // Create and append new server box
       const box = document.createElement("div");
       box.className = "server-box fade-in-left";
       box.innerHTML = `
