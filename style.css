@@ -92,9 +92,8 @@ nav a:hover {
   transition: all 0.3s ease;
 }
 
-.server-box:hover {
-  transform: scale(1.05);
-  box-shadow: 0 0 35px rgba(0, 170, 255, 0.6), 0 0 15px rgba(0, 170, 255, 0.4);
+$1
+  animation: glowBox 1.5s infinite alternate;
 }
 
 .server-box:nth-child(2) {
@@ -119,11 +118,18 @@ nav a:hover {
   box-shadow: 0 0 25px rgba(0, 162, 255, 0.6);
 }
 
-@keyframes fadeIn {
+@keyframes glowBox {
   from {
-    opacity: 0;
-    transform: translateY(20px);
+    box-shadow: 0 0 35px rgba(0, 170, 255, 0.6), 0 0 15px rgba(0, 170, 255, 0.4);
+    transform: scale(1.05);
   }
+  to {
+    box-shadow: 0 0 50px rgba(0, 200, 255, 0.8), 0 0 30px rgba(0, 170, 255, 0.5);
+    transform: scale(1.08);
+  }
+}
+
+$1
   to {
     opacity: 1;
     transform: translateY(0);
