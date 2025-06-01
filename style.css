@@ -29,6 +29,22 @@ header {
   font-weight: 700;
   color: #00aaff;
   text-shadow: 0 0 10px rgba(0, 170, 255, 0.5);
+  transition: all 0.3s ease;
+}
+
+/* Activate logo animation when hovering the entire container */
+.server-container:hover ~ header .logo {
+  animation: glowPulse 1.5s infinite alternate;
+  cursor: pointer;
+}
+
+@keyframes glowPulse {
+  from {
+    text-shadow: 0 0 10px rgba(0, 170, 255, 0.5);
+  }
+  to {
+    text-shadow: 0 0 20px rgba(0, 255, 255, 0.8), 0 0 30px rgba(0, 170, 255, 0.6);
+  }
 }
 
 nav a {
