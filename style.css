@@ -3,6 +3,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  cursor: none;
 }
 
 body {
@@ -20,6 +21,38 @@ body {
 body.light-mode {
   background: linear-gradient(to right, #fdfbfb, #ebedee);
   color: #111;
+}
+
+/* CUSTOM CURSOR */
+.custom-cursor {
+  position: fixed;
+  width: 12px;
+  height: 12px;
+  background-color: #00e1ff;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  box-shadow: 0 0 12px rgba(0, 229, 255, 0.7);
+  transform: translate(-50%, -50%);
+  transition: transform 0.1s ease;
+}
+
+.cursor-trail {
+  position: fixed;
+  width: 24px;
+  height: 24px;
+  background-color: rgba(0, 229, 255, 0.2);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9998;
+  transform: translate(-50%, -50%);
+  filter: blur(8px);
+  animation: trailFade 0.6s forwards;
+}
+
+@keyframes trailFade {
+  from { opacity: 1; }
+  to { opacity: 0; }
 }
 
 /* THEME TOGGLE */
@@ -123,23 +156,29 @@ nav a:hover {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background: rgba(255, 255, 255, 0.02);
   padding: 1.5rem;
   border-radius: 20px;
-  box-shadow: 0 0 30px rgba(0, 229, 255, 0.1);
   backdrop-filter: blur(12px);
   transition: all 0.3s ease;
   width: 360px;
   min-height: 560px;
   opacity: 1;
-  border: 1px solid rgba(0, 229, 255, 0.3);
+  border: 2px solid transparent;
+  background: linear-gradient(#111, #111) padding-box,
+              linear-gradient(135deg, #00e1ff, #4df2ff, #00e1ff) border-box;
+  background-size: 400% 400%;
+  animation: gradientBorder 8s ease infinite;
+}
+
+@keyframes gradientBorder {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
 
 .server-box:hover {
   transform: scale(1.08);
   box-shadow: 0 0 50px rgba(0, 229, 255, 0.8), 0 0 70px rgba(0, 229, 255, 0.4);
-  background: linear-gradient(145deg, rgba(0, 229, 255, 0.05), rgba(0, 229, 255, 0.1));
-  border-color: rgba(0, 229, 255, 0.6);
 }
 
 .server-box h2 {
