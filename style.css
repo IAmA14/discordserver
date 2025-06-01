@@ -136,7 +136,13 @@ $1
   }
 }
 
-/* POPUP STYLES */
+@keyframes buttonClick {
+  0% { transform: scale(1); }
+  50% { transform: scale(0.95); }
+  100% { transform: scale(1.05); }
+}
+
+$1
 .widget-clickable {
   cursor: pointer;
 }
@@ -170,23 +176,13 @@ $1
   font-size: 1.4rem;
 }
 
-.exit-popup-content button {
-  background: #00c3ff;
-  color: #000;
-  border: none;
-  padding: 0.7rem 1.7rem;
-  margin: 0.5rem;
-  border-radius: 50px;
-  cursor: pointer;
-  font-weight: bold;
-  font-size: 1rem;
-  transition: all 0.2s ease;
-}
+$1
+  animation: none;
 
-.exit-popup-content button:hover {
-  background-color: #ffffff;
-  color: #000;
-}
+
+$1
+  animation: buttonClick 0.2s ease;
+
 
 .hidden {
   display: none;
