@@ -92,8 +92,10 @@ nav a:hover {
   transition: all 0.3s ease;
 }
 
-$1
-  animation: glowBox 1.5s infinite alternate;
+.server-box:hover {
+  transform: scale(1.08);
+  animation: glowBox 1.2s infinite alternate;
+  box-shadow: 0 0 40px rgba(0, 170, 255, 0.5), 0 0 80px rgba(0, 170, 255, 0.3);
 }
 
 .server-box:nth-child(2) {
@@ -118,21 +120,25 @@ $1
   box-shadow: 0 0 25px rgba(0, 162, 255, 0.6);
 }
 
-@keyframes glowBox {
+@keyframes fadeIn {
   from {
-    box-shadow: 0 0 35px rgba(0, 170, 255, 0.6), 0 0 15px rgba(0, 170, 255, 0.4);
-    transform: scale(1.05);
+    opacity: 0;
+    transform: translateY(20px);
   }
-  to {
-    box-shadow: 0 0 50px rgba(0, 200, 255, 0.8), 0 0 30px rgba(0, 170, 255, 0.5);
-    transform: scale(1.08);
-  }
-}
-
-$1
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+@keyframes glowBox {
+  from {
+    box-shadow: 0 0 30px rgba(0, 170, 255, 0.4);
+    transform: scale(1.05);
+  }
+  to {
+    box-shadow: 0 0 60px rgba(0, 200, 255, 0.8), 0 0 80px rgba(0, 170, 255, 0.4);
+    transform: scale(1.08);
   }
 }
 
@@ -142,7 +148,6 @@ $1
   100% { transform: scale(1.05); }
 }
 
-$1
 .widget-clickable {
   cursor: pointer;
 }
@@ -176,13 +181,25 @@ $1
   font-size: 1.4rem;
 }
 
-$1
+.exit-popup-content button {
+  background: #00c3ff;
+  color: #000;
+  border: none;
+  padding: 0.7rem 1.7rem;
+  margin: 0.5rem;
+  border-radius: 50px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 1rem;
+  transition: all 0.2s ease;
   animation: none;
+}
 
-
-$1
+.exit-popup-content button:hover {
+  background-color: #ffffff;
+  color: #000;
   animation: buttonClick 0.2s ease;
-
+}
 
 .hidden {
   display: none;
