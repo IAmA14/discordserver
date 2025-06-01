@@ -21,6 +21,25 @@
       box-shadow: 0 4px 12px rgba(0, 229, 255, 0.3);
       z-index: 100;
       text-align: center;
+      transition: transform 0.2s ease, opacity 0.2s ease;
+    }
+
+    .online-counter.up {
+      animation: countUp 0.3s ease;
+    }
+
+    .online-counter.down {
+      animation: countDown 0.3s ease;
+    }
+
+    @keyframes countUp {
+      0% { transform: translate(-50%, -60%); opacity: 0; }
+      100% { transform: translate(-50%, -50%); opacity: 1; }
+    }
+
+    @keyframes countDown {
+      0% { transform: translate(-50%, -40%); opacity: 0; }
+      100% { transform: translate(-50%, -50%); opacity: 1; }
     }
 
     #theme-toggle {
@@ -113,12 +132,17 @@
     function updateUsers() {
       const change = Math.floor(Math.random() * 101); // 0 - 100
       const direction = Math.random() < 0.5 ? -1 : 1;
-      fakeUsers += change * direction;
-      if (fakeUsers < 0) fakeUsers = 0;
+      const newCount = fakeUsers + (change * direction);
+      const animationClass = (newCount > fakeUsers) ? 'up' : 'down';
+      fakeUsers = Math.max(0, newCount);
+
+      counter.classList.remove('up', 'down');
+      void counter.offsetWidth; // trigger reflow
+      counter.classList.add(animationClass);
       counter.textContent = `🔵 ${fakeUsers.toLocaleString()} users currently online`;
     }
 
-    setInterval(updateUsers, 1000); // every second
+    setInterval(updateUsers, 1); // every millisecond
   </script>
 </body>
 </html>
