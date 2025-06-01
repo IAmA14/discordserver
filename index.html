@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <title>Collaborators</title>
   <link rel="stylesheet" href="style.css">
   <style>
@@ -10,6 +10,11 @@
       margin: 0;
       padding: 0;
       box-sizing: border-box;
+    }
+
+    html, body {
+      max-width: 100%;
+      overflow-x: hidden;
     }
 
     body {
@@ -83,7 +88,8 @@
       transition: all 0.3s ease;
       box-shadow: 0 0 0 transparent;
       width: 100%;
-      height: 450px;
+      height: 60vh;
+      max-height: 500px;
     }
 
     .server-box iframe:hover {
