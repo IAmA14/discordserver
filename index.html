@@ -92,6 +92,33 @@
       border-radius: 8px;
       cursor: pointer;
     }
+
+    /* Light mode styles example */
+    body.light-mode {
+      background-color: #f0f0f0;
+      color: #222;
+    }
+
+    body.light-mode .online-counter {
+      background: rgba(0, 162, 255, 0.1);
+      color: #007acc;
+      box-shadow: 0 4px 12px rgba(0, 122, 204, 0.3);
+    }
+
+    body.light-mode #theme-toggle {
+      background: rgba(0, 122, 204, 0.15);
+      border-color: #007acc;
+      color: #007acc;
+      box-shadow: 0 0 12px rgba(0, 122, 204, 0.4);
+    }
+
+    body.light-mode iframe {
+      box-shadow: 0 0 20px rgba(0, 122, 204, 0.15);
+    }
+
+    body.light-mode iframe:hover {
+      box-shadow: 0 0 25px rgba(0, 122, 204, 0.6);
+    }
   </style>
 </head>
 <body>
@@ -130,9 +157,23 @@
     const toggleButton = document.getElementById("theme-toggle");
     const body = document.body;
 
+    // Set initial theme based on the emoji in the button
+    if (toggleButton.textContent.trim() === "🌞") {
+      body.classList.remove("light-mode"); // dark theme
+    } else if (toggleButton.textContent.trim() === "🌙") {
+      body.classList.add("light-mode");
+    }
+
     toggleButton.addEventListener("click", () => {
-      body.classList.toggle("light-mode");
-      toggleButton.textContent = body.classList.contains("light-mode") ? "🌙" : "🌞";
+      if (toggleButton.textContent.trim() === "🌞") {
+        // Sun emoji means switch to dark theme
+        body.classList.remove("light-mode");
+        toggleButton.textContent = "🌙";
+      } else if (toggleButton.textContent.trim() === "🌙") {
+        // Moon emoji means switch to light theme
+        body.classList.add("light-mode");
+        toggleButton.textContent = "🌞";
+      }
     });
 
     const counter = document.querySelector('.online-counter');
@@ -147,7 +188,7 @@
       fakeUsers = newCount;
 
       counter.classList.remove('up', 'down');
-      void counter.offsetWidth;
+      void counter.offsetWidth; // trigger reflow for animation restart
       counter.classList.add(animationClass);
       counter.textContent = `🔵 ${fakeUsers.toLocaleString()} users currently online`;
     }
