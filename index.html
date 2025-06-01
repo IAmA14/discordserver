@@ -29,14 +29,17 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 1rem 5rem;
-      position: relative;
+      padding: 1rem 2rem;
+      flex-wrap: wrap;
     }
 
     .logo {
       font-size: 2rem;
-      position: relative;
       z-index: 2;
+    }
+
+    nav {
+      margin-top: 10px;
     }
 
     nav a {
@@ -47,38 +50,44 @@
     }
 
     .page-title {
-      font-size: 2.5rem;
+      font-size: 2rem;
       text-align: center;
-      margin-bottom: 40px;
+      margin: 20px 10px;
     }
 
     .server-container {
       display: flex;
       justify-content: center;
-      gap: 40px;
+      gap: 30px;
       flex-wrap: wrap;
-      padding: 20px;
+      padding: 10px;
     }
 
     .server-box {
       display: flex;
       flex-direction: column;
       align-items: center;
+      width: 100%;
+      max-width: 360px;
       opacity: 0;
     }
 
     .server-box h2 {
       margin-bottom: 10px;
+      text-align: center;
+      font-size: 1.2rem;
     }
 
     .server-box iframe {
       border-radius: 10px;
       transition: all 0.3s ease;
       box-shadow: 0 0 0 transparent;
+      width: 100%;
+      height: 450px;
     }
 
     .server-box iframe:hover {
-      transform: scale(1.05);
+      transform: scale(1.03);
       box-shadow: 0 0 25px rgba(0, 162, 255, 0.6);
     }
 
@@ -93,6 +102,7 @@
       cursor: pointer;
       transition: all 0.3s ease;
       text-decoration: none;
+      font-size: 1rem;
     }
 
     .join-button:hover {
@@ -133,8 +143,8 @@
 
     #theme-toggle {
       position: fixed;
-      top: 20px;
-      left: 20px;
+      top: 15px;
+      left: 15px;
       font-size: 1.5rem;
       cursor: pointer;
       background: none;
@@ -146,6 +156,25 @@
 
     #theme-toggle:hover {
       transform: scale(1.2);
+    }
+
+    @media (max-width: 600px) {
+      .logo {
+        font-size: 1.5rem;
+      }
+
+      nav a {
+        font-size: 0.9rem;
+        margin-left: 10px;
+      }
+
+      .page-title {
+        font-size: 1.6rem;
+      }
+
+      .join-button {
+        font-size: 0.9rem;
+      }
     }
   </style>
 </head>
@@ -164,19 +193,19 @@
     <div class="server-container">
       <div id="zautuan-server" class="server-box fade-in-left">
         <h2>Zautuan's Server</h2>
-        <iframe src="https://discord.com/widget?id=1362052203048599795&theme=dark" width="350" height="500" allowtransparency="true" frameborder="0" sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"></iframe>
+        <iframe src="https://discord.com/widget?id=1362052203048599795&theme=dark" allowtransparency="true" frameborder="0" sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"></iframe>
         <a href="https://discord.gg/6jnTFtPwPS" class="join-button">Join Server</a>
       </div>
 
       <div id="puatuan-server" class="server-box fade-in-right">
         <h2>Puatuan's Server</h2>
-        <iframe src="https://discord.com/widget?id=1368507828003934279&theme=dark" width="350" height="500" allowtransparency="true" frameborder="0" sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"></iframe>
+        <iframe src="https://discord.com/widget?id=1368507828003934279&theme=dark" allowtransparency="true" frameborder="0" sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"></iframe>
         <a href="https://discord.gg/invite/DhgUjrErkw" class="join-button">Join Server</a>
       </div>
 
       <div id="manifest-server" class="server-box fade-in-left">
         <h2>Manifest | Lost Voyages</h2>
-        <iframe src="https://discord.com/widget?id=1354620175407907009&theme=dark" width="350" height="500" allowtransparency="true" frameborder="0" sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"></iframe>
+        <iframe src="https://discord.com/widget?id=1354620175407907009&theme=dark" allowtransparency="true" frameborder="0" sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"></iframe>
         <a href="https://discord.gg/t3bVeZV5EQ" class="join-button">Join Server</a>
       </div>
     </div>
