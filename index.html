@@ -7,10 +7,10 @@
   <link rel="stylesheet" href="style.css">
   <style>
     .online-counter {
-      position: absolute;
-      top: 50%;
+      position: fixed;
+      top: 10px;
       left: 50%;
-      transform: translate(-50%, -50%);
+      transform: translateX(-50%);
       background: rgba(0, 225, 255, 0.1);
       color: #00e1ff;
       font-weight: bold;
@@ -19,7 +19,7 @@
       font-size: 1rem;
       backdrop-filter: blur(10px);
       box-shadow: 0 4px 12px rgba(0, 229, 255, 0.3);
-      z-index: 100;
+      z-index: 1000;
       text-align: center;
       transition: transform 0.2s ease, opacity 0.2s ease;
     }
@@ -33,18 +33,18 @@
     }
 
     @keyframes countUp {
-      0% { transform: translate(-50%, -60%); opacity: 0; }
-      100% { transform: translate(-50%, -50%); opacity: 1; }
+      0% { transform: translateX(-50%) translateY(-10px); opacity: 0; }
+      100% { transform: translateX(-50%) translateY(0); opacity: 1; }
     }
 
     @keyframes countDown {
-      0% { transform: translate(-50%, -40%); opacity: 0; }
-      100% { transform: translate(-50%, -50%); opacity: 1; }
+      0% { transform: translateX(-50%) translateY(10px); opacity: 0; }
+      100% { transform: translateX(-50%) translateY(0); opacity: 1; }
     }
 
     #theme-toggle {
       position: fixed;
-      top: 80px;
+      top: 60px;
       left: 20px;
       background: rgba(0, 225, 255, 0.15);
       border: 2px solid #00e1ff;
@@ -67,6 +67,7 @@
 
     header {
       position: relative;
+      padding-top: 50px;
     }
 
     iframe {
@@ -84,8 +85,8 @@
   </style>
 </head>
 <body>
+  <div class="online-counter">🔵 12,384 users currently online</div>
   <header>
-    <div class="online-counter">🔵 12,384 users currently online</div>
     <h1 class="logo">PTN</h1>
     <nav>
       <a href="index.html">Home</a>
