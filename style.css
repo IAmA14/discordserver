@@ -23,31 +23,25 @@ body.light-mode {
   color: #111;
 }
 
-/* CUSTOM CURSOR */
+/* CUSTOM CURSOR IMAGE */
 .custom-cursor {
   position: fixed;
-  width: 12px;
-  height: 12px;
-  background-color: #00e1ff;
-  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  background: url('https://cdn.custom-cursor.com/packs/2122/thumbnails/pack2747.png') no-repeat center center;
+  background-size: contain;
   pointer-events: none;
   z-index: 9999;
-  box-shadow: 0 0 12px rgba(0, 229, 255, 0.7);
   transform: translate(-50%, -50%);
-  transition: transform 0.1s ease;
+  transition: transform 0.05s ease;
+}
+
+.cursor-click {
+  background-position: right center;
 }
 
 .cursor-trail {
-  position: fixed;
-  width: 24px;
-  height: 24px;
-  background-color: rgba(0, 229, 255, 0.2);
-  border-radius: 50%;
-  pointer-events: none;
-  z-index: 9998;
-  transform: translate(-50%, -50%);
-  filter: blur(8px);
-  animation: trailFade 0.6s forwards;
+  display: none;
 }
 
 @keyframes trailFade {
