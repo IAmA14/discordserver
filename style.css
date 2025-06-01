@@ -1,6 +1,6 @@
-/* General body styles */
+/* Body & base */
 body {
-  background: linear-gradient(135deg, #00111f, #010a13);
+  background: #010a13;
   color: #00e1ff;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   margin: 0;
@@ -11,7 +11,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Header and nav */
+/* Header */
 header {
   padding: 40px 60px 20px;
   display: flex;
@@ -57,9 +57,9 @@ nav a:hover {
     0 0 25px #00e1ff;
 }
 
-/* Main content */
+/* Main */
 main {
-  max-width: 980px;
+  max-width: 1040px;
   margin: 40px auto 80px;
   padding: 0 25px;
 }
@@ -80,17 +80,17 @@ main {
   user-select: none;
 }
 
-/* Container for server boxes */
+/* Server container */
 .server-container {
   display: flex;
   justify-content: center;
   gap: 55px;
   flex-wrap: nowrap;
   margin: 0 auto;
-  max-width: 980px;
+  max-width: 1040px;
 }
 
-/* Each server box */
+/* Server box */
 .server-box {
   background: rgba(1, 22, 33, 0.85);
   border-radius: 20px;
@@ -98,7 +98,7 @@ main {
     0 0 30px rgba(0, 229, 255, 0.5),
     inset 0 0 10px rgba(0, 162, 255, 0.3);
   padding: 25px;
-  width: 320px;
+  width: 400px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -107,6 +107,7 @@ main {
   cursor: default;
   backdrop-filter: saturate(180%) blur(15px);
   border: 1.5px solid rgba(0, 229, 255, 0.25);
+  overflow: hidden;
 }
 
 .server-box:hover {
@@ -131,15 +132,16 @@ main {
   user-select: none;
 }
 
-/* Discord iframe */
+/* Discord widget iframe */
 iframe {
   border-radius: 20px;
   width: 100%;
-  height: 280px;
+  height: 350px;
   border: none;
   box-shadow:
     inset 0 0 30px rgba(0, 162, 255, 0.5);
   transition: box-shadow 0.3s ease;
+  overflow-y: scroll !important; /* ensure scroll on widget */
 }
 
 iframe:hover {
