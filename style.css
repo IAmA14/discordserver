@@ -24,19 +24,28 @@ header {
   backdrop-filter: blur(6px);
 }
 
-$1
-  transform: scale(1);
-
-
-$1
-  transform: scale(1.1);
+.logo {
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: #00aaff;
+  text-shadow: 0 0 10px rgba(0, 170, 255, 0.5);
+  transition: all 0.3s ease;
 }
 
-$1
+.server-container:hover ~ header .logo {
+  animation: glowPulse 1.5s infinite alternate;
   transform: scale(1.1);
+  cursor: pointer;
 }
+
+@keyframes glowPulse {
+  from {
+    text-shadow: 0 0 10px rgba(0, 170, 255, 0.5);
+    transform: scale(1.05);
+  }
   to {
     text-shadow: 0 0 20px rgba(0, 255, 255, 0.8), 0 0 30px rgba(0, 170, 255, 0.6);
+    transform: scale(1.1);
   }
 }
 
@@ -80,12 +89,12 @@ nav a:hover {
   border-radius: 12px;
   box-shadow: 0 0 20px rgba(0, 170, 255, 0.1);
   animation: fadeIn 1s ease forwards;
-  transition: transform 0.3s ease;
+  transition: all 0.3s ease;
 }
 
-$1
-  transform: scale(1.03) translateY(-5px);
-  animation: glowWidget 1.2s infinite alternate;
+.server-box:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 35px rgba(0, 170, 255, 0.6), 0 0 15px rgba(0, 170, 255, 0.4);
 }
 
 .server-box:nth-child(2) {
@@ -110,16 +119,6 @@ $1
   box-shadow: 0 0 25px rgba(0, 162, 255, 0.6);
 }
 
-@keyframes glowWidget {
-  from {
-    box-shadow: 0 0 20px rgba(0, 170, 255, 0.2);
-  }
-  to {
-    box-shadow: 0 0 35px rgba(0, 170, 255, 0.6), 0 0 15px rgba(0, 170, 255, 0.4);
-  }
-}
-
-$1
 @keyframes fadeIn {
   from {
     opacity: 0;
