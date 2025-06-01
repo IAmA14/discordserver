@@ -3,7 +3,6 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  cursor: none;
 }
 
 body {
@@ -21,33 +20,6 @@ body {
 body.light-mode {
   background: linear-gradient(to right, #fdfbfb, #ebedee);
   color: #111;
-}
-
-/* CUSTOM CURSOR IMAGE */
-.custom-cursor {
-  position: fixed;
-  width: 48px;
-  height: 48px;
-  background: url('https://i.imgur.com/9ITkqUl.png') no-repeat center center;
-  background-size: contain;
-  pointer-events: none;
-  z-index: 9999;
-  transform: translate(-50%, -50%);
-  transition: transform 0.05s ease;
-}
-
-.cursor-click {
-  background: url('https://i.imgur.com/kzEgt3d.png') no-repeat center center;
-  background-size: contain;
-}
-
-.cursor-trail {
-  display: none;
-}
-
-@keyframes trailFade {
-  from { opacity: 1; }
-  to { opacity: 0; }
 }
 
 /* THEME TOGGLE */
