@@ -3,9 +3,17 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <title>Collaborators</title>
-  <link rel="stylesheet" href="style.css">
+  <title>Collaborators & Apply</title>
   <style>
+    body {
+      background: #010a13;
+      color: #00e1ff;
+      font-family: system-ui, sans-serif;
+      margin: 0; padding: 0;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
     .online-counter {
       position: fixed;
       top: 10px;
@@ -23,11 +31,9 @@
       text-align: center;
       transition: transform 0.2s ease, opacity 0.2s ease;
     }
-
     .online-counter.up, .online-counter.down {
       animation: counterPulse 0.2s ease;
     }
-
     @keyframes counterPulse {
       0% {
         transform: translateX(-50%) scale(1.05);
@@ -39,9 +45,47 @@
       }
     }
 
+    header {
+      position: relative;
+      padding: 50px 20px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: #011621;
+      box-shadow: 0 0 20px rgba(0, 229, 255, 0.3);
+    }
+
+    .logo {
+      font-weight: bold;
+      font-size: 1.8rem;
+    }
+
+    nav a {
+      color: #00e1ff;
+      font-weight: bold;
+      text-decoration: none;
+      font-size: 1rem;
+    }
+
+    #apply-button {
+      background-color: #00e1ff;
+      color: #000;
+      padding: 8px 15px;
+      font-weight: bold;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      box-shadow: 0 0 10px #00e1ff;
+      transition: background-color 0.3s ease;
+    }
+    #apply-button:hover {
+      background-color: #00b8d9;
+      box-shadow: 0 0 20px #00b8d9;
+    }
+
     #theme-toggle {
       position: fixed;
-      top: 60px;
+      top: 70px;
       left: 20px;
       background: rgba(0, 225, 255, 0.15);
       border: 2px solid #00e1ff;
@@ -56,84 +100,169 @@
       transition: transform 0.2s ease, box-shadow 0.3s ease;
       z-index: 200;
     }
-
     #theme-toggle:hover {
       transform: scale(1.15);
       box-shadow: 0 0 20px rgba(0, 229, 255, 0.8);
     }
 
-    header {
-      position: relative;
-      padding-top: 50px;
+    main {
+      max-width: 960px;
+      margin: 40px auto 60px;
+      padding: 0 20px;
+    }
+
+    .page-title {
+      font-size: 2rem;
+      margin-bottom: 20px;
+      text-align: center;
+      font-weight: bold;
+      text-shadow: 0 0 10px #00e1ff;
+    }
+
+    .server-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 30px;
+      justify-content: center;
+    }
+
+    .server-box {
+      background: #011621;
+      border-radius: 12px;
+      box-shadow: 0 0 15px rgba(0, 229, 255, 0.2);
+      padding: 15px;
+      width: 320px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      color: white;
+      transition: box-shadow 0.3s ease, transform 0.3s ease;
+    }
+    .server-box:hover {
+      box-shadow: 0 0 35px #00e1ff;
+      transform: scale(1.03);
+    }
+
+    .server-box h2 {
+      margin-bottom: 12px;
+      font-size: 1.25rem;
+      text-align: center;
+      text-shadow: 0 0 8px #00e1ff;
     }
 
     iframe {
-      width: 100%;
-      height: 500px;
       border-radius: 10px;
-      transition: all 0.3s ease;
-      box-shadow: 0 0 20px rgba(0, 162, 255, 0.15);
-    }
-
-    iframe:hover {
-      transform: scale(1.03);
-      box-shadow: 0 0 25px rgba(0, 162, 255, 0.6);
-    }
-
-    #apply-button {
-      position: absolute;
-      top: 10px;
-      right: 20px;
-      background-color: #00e1ff;
-      color: #000;
-      padding: 6px 12px;
-      font-weight: bold;
+      width: 100%;
+      height: 220px;
       border: none;
-      border-radius: 8px;
-      cursor: pointer;
+      box-shadow: inset 0 0 15px rgba(0, 162, 255, 0.3);
+      transition: box-shadow 0.3s ease;
+    }
+    iframe:hover {
+      box-shadow: inset 0 0 25px #00e1ff;
     }
 
-    #application-form {
+    .join-button {
+      margin-top: 15px;
+      background-color: #00e1ff;
+      border: none;
+      padding: 10px 20px;
+      font-weight: bold;
+      color: #000;
+      border-radius: 25px;
+      cursor: pointer;
+      box-shadow: 0 0 15px #00e1ff;
+      text-decoration: none;
+      text-align: center;
+      transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    }
+    .join-button:hover {
+      background-color: #00b8d9;
+      box-shadow: 0 0 25px #00b8d9;
+    }
+
+    /* Application form styles */
+    #application-section {
+      margin-top: 60px;
+      background: rgba(0, 225, 255, 0.1);
+      max-width: 360px;
+      margin-left: auto;
+      margin-right: auto;
+      padding: 25px 30px;
+      border-radius: 16px;
+      box-shadow: 0 0 20px rgba(0, 229, 255, 0.6);
       display: none;
       flex-direction: column;
-      gap: 10px;
-      background: rgba(255,255,255,0.95);
-      color: #000;
-      padding: 20px;
-      border-radius: 12px;
-      width: 300px;
-      margin: 20px auto;
+      color: #fff;
     }
 
-    #application-form input {
-      padding: 8px;
-      border-radius: 6px;
-      border: 1px solid #ccc;
-    }
-
-    #application-form button {
-      background-color: #28a745;
-      color: white;
-      border: none;
-      padding: 10px;
+    #application-section label {
       font-weight: bold;
-      cursor: pointer;
+      font-size: 0.95rem;
+      margin-top: 10px;
+      text-shadow: 0 0 8px #00e1ff;
+    }
+
+    #application-section input {
+      padding: 10px;
       border-radius: 8px;
+      border: none;
+      font-size: 1rem;
+      margin-top: 6px;
+      background: rgba(255 255 255 / 0.1);
+      color: #00e1ff;
+      box-shadow: inset 0 0 10px #00e1ff;
+      outline: none;
+      transition: background 0.3s ease;
+    }
+    #application-section input:focus {
+      background: rgba(0, 229, 255, 0.25);
+      box-shadow: 0 0 15px #00e1ff;
+    }
+
+    #application-section button {
+      margin-top: 20px;
+      background-color: #00e1ff;
+      border: none;
+      border-radius: 14px;
+      padding: 12px;
+      font-weight: bold;
+      font-size: 1.1rem;
+      cursor: pointer;
+      box-shadow: 0 0 20px #00e1ff;
+      transition: background-color 0.3s ease, box-shadow 0.3s ease;
+      color: #000;
+    }
+    #application-section button:hover {
+      background-color: #00b8d9;
+      box-shadow: 0 0 30px #00b8d9;
     }
 
     #success-msg {
-      color: green;
-      font-size: 10px;
-      margin-top: 5px;
-      display: none;
+      font-size: 0.9rem;
+      margin-top: 10px;
       text-align: center;
+      color: #32cd32;
+      display: none;
+      text-shadow: 0 0 6px #32cd32;
+    }
+
+    /* Responsive */
+    @media (max-width: 420px) {
+      .server-box {
+        width: 100%;
+      }
+      #application-section {
+        width: 90%;
+        padding: 20px;
+      }
     }
   </style>
 </head>
 <body>
   <div class="online-counter">🔵 12,384 users currently online</div>
   <header>
-    <h1 class="logo">PTN</h1>
+    <div class="logo">PTN</div>
     <nav>
       <a href="index.html">Home</a>
     </nav>
@@ -141,20 +270,6 @@
   </header>
 
   <button id="theme-toggle" title="Toggle Theme">🌞</button>
-
-  <form id="application-form">
-    <label>Question 1: Paste your Discord server widget iframe URL</label>
-    <input type="text" id="server-widget" required />
-
-    <label>Question 2: Insert your Discord server invite link</label>
-    <input type="text" id="server-link" required />
-
-    <label>Question 3: Insert your Discord server name</label>
-    <input type="text" id="server-name" required />
-
-    <button type="submit" id="submit-btn">SUBMIT</button>
-    <div id="success-msg">Success, redirecting...</div>
-  </form>
 
   <main>
     <h1 class="page-title">Our Servers/Collaborators</h1>
@@ -164,60 +279,107 @@
         <iframe src="https://discord.com/widget?id=1362052203048599795&theme=dark" allowtransparency="true" frameborder="0" sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"></iframe>
         <a href="https://discord.gg/6jnTFtPwPS" class="join-button">Join Server</a>
       </div>
+      <div class="server-box fade-in-left">
+        <h2>Puatuan's Server</h2>
+        <iframe src="https://discord.com/widget?id=1368507828003934279&theme=dark" allowtransparency="true" frameborder="0" sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"></iframe>
+        <a href="https://discord.gg/invite/DhgUjrErkw" class="join-button">Join Server</a>
+      </div>
+      <div class="server-box fade-in-left">
+        <h2>Manifest | Lost Voyages</h2>
+        <iframe src="https://discord.com/widget?id=1354620175407907009&theme=dark" allowtransparency="true" frameborder="0" sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"></iframe>
+        <a href="https://discord.gg/t3bVeZV5EQ" class="join-button">Join Server</a>
+      </div>
     </div>
+
+    <section id="application-section">
+      <h2>Apply to Collaborate</h2>
+      <form id="application-form">
+        <label for="server-widget">Question 1: Paste your Discord server widget iframe URL</label>
+        <input type="text" id="server-widget" required placeholder="https://discord.com/widget?id=123456789012345678&theme=dark" />
+
+        <label for="server-link">Question 2: Insert your Discord server invite link</label>
+        <input type="text" id="server-link" required placeholder="https://discord.gg/yourinvite" />
+
+        <label for="server-name">Question 3: Insert your Discord server name</label>
+        <input type="text" id="server-name" required placeholder="My Awesome Server" />
+
+        <button type="submit" id="submit-btn">SUBMIT</button>
+        <div id="success-msg">Success, redirecting...</div>
+      </form>
+    </section>
   </main>
 
   <script>
     const toggleButton = document.getElementById("theme-toggle");
     const body = document.body;
     const applyButton = document.getElementById("apply-button");
-    const form = document.getElementById("application-form");
+    const applicationSection = document.getElementById("application-section");
     const container = document.getElementById("server-container");
+    const form = document.getElementById("application-form");
     const submitBtn = document.getElementById("submit-btn");
     const successMsg = document.getElementById("success-msg");
 
-    applyButton.onclick = () => form.style.display = form.style.display === 'flex' ? 'none' : 'flex';
+    // Theme toggle
+    toggleButton.addEventListener("click", () => {
+      body.classList.toggle("light-mode");
+      toggleButton.textContent = body.classList.contains("light-mode") ? "🌙" : "🌞";
+    });
 
+    // Show/hide apply form scroll to it
+    applyButton.addEventListener("click", () => {
+      if (applicationSection.style.display === "flex") {
+        applicationSection.style.display = "none";
+      } else {
+        applicationSection.style.display = "flex";
+        applicationSection.scrollIntoView({ behavior: "smooth" });
+      }
+    });
+
+    // Form submission
     form.onsubmit = function(e) {
       e.preventDefault();
 
-      const name = document.getElementById("server-name").value;
-      const link = document.getElementById("server-link").value;
-      const widget = document.getElementById("server-widget").value;
+      const name = document.getElementById("server-name").value.trim();
+      const link = document.getElementById("server-link").value.trim();
+      const widget = document.getElementById("server-widget").value.trim();
+
+      if (!name || !link || !widget) return;
 
       submitBtn.disabled = true;
-      successMsg.style.display = 'block';
+      successMsg.style.display = "block";
 
+      // Create new server box
       const box = document.createElement("div");
       box.className = "server-box fade-in-left";
       box.innerHTML = `
         <h2>${name}</h2>
         <iframe src="${widget}" allowtransparency="true" frameborder="0" sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"></iframe>
-        <a href="${link}" class="join-button">Join Server</a>
+        <a href="${link}" class="join-button" target="_blank" rel="noopener noreferrer">Join Server</a>
       `;
       container.appendChild(box);
 
       setTimeout(() => {
         form.reset();
-        form.style.display = "none";
-        successMsg.style.display = 'none';
+        applicationSection.style.display = "none";
+        successMsg.style.display = "none";
         submitBtn.disabled = false;
-        window.scrollTo({ top: box.offsetTop, behavior: 'smooth' });
+        box.scrollIntoView({ behavior: "smooth" });
       }, 1500);
     };
 
-    const counter = document.querySelector('.online-counter');
+    // Fake user count
+    const counter = document.querySelector(".online-counter");
     let fakeUsers = Math.floor(Math.random() * 90000) + 10000;
 
     function updateUsers() {
       const change = Math.floor(Math.random() * 101);
       const direction = Math.random() < 0.5 ? -1 : 1;
-      let newCount = fakeUsers + (change * direction);
+      let newCount = fakeUsers + change * direction;
       newCount = Math.min(100000, Math.max(0, newCount));
-      const animationClass = (newCount > fakeUsers) ? 'up' : 'down';
+      const animationClass = newCount > fakeUsers ? "up" : "down";
       fakeUsers = newCount;
 
-      counter.classList.remove('up', 'down');
+      counter.classList.remove("up", "down");
       void counter.offsetWidth;
       counter.classList.add(animationClass);
       counter.textContent = `🔵 ${fakeUsers.toLocaleString()} users currently online`;
