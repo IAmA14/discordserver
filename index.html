@@ -79,6 +79,55 @@
       transform: scale(1.03);
       box-shadow: 0 0 25px rgba(0, 162, 255, 0.6);
     }
+
+    #apply-button {
+      position: absolute;
+      top: 10px;
+      right: 20px;
+      background-color: #00e1ff;
+      color: #000;
+      padding: 6px 12px;
+      font-weight: bold;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    #application-form {
+      display: none;
+      flex-direction: column;
+      gap: 10px;
+      background: rgba(255,255,255,0.95);
+      color: #000;
+      padding: 20px;
+      border-radius: 12px;
+      width: 300px;
+      margin: 20px auto;
+    }
+
+    #application-form input {
+      padding: 8px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+    }
+
+    #application-form button {
+      background-color: #28a745;
+      color: white;
+      border: none;
+      padding: 10px;
+      font-weight: bold;
+      cursor: pointer;
+      border-radius: 8px;
+    }
+
+    #success-msg {
+      color: green;
+      font-size: 10px;
+      margin-top: 5px;
+      display: none;
+      text-align: center;
+    }
   </style>
 </head>
 <body>
@@ -88,29 +137,32 @@
     <nav>
       <a href="index.html">Home</a>
     </nav>
+    <button id="apply-button">Apply</button>
   </header>
 
   <button id="theme-toggle" title="Toggle Theme">🌞</button>
 
+  <form id="application-form">
+    <label>Question 1: Paste your Discord server widget iframe URL</label>
+    <input type="text" id="server-widget" required />
+
+    <label>Question 2: Insert your Discord server invite link</label>
+    <input type="text" id="server-link" required />
+
+    <label>Question 3: Insert your Discord server name</label>
+    <input type="text" id="server-name" required />
+
+    <button type="submit" id="submit-btn">SUBMIT</button>
+    <div id="success-msg">Success, redirecting...</div>
+  </form>
+
   <main>
     <h1 class="page-title">Our Servers/Collaborators</h1>
-    <div class="server-container">
+    <div class="server-container" id="server-container">
       <div id="zautuan-server" class="server-box fade-in-left">
         <h2>Zautuan's Server</h2>
         <iframe src="https://discord.com/widget?id=1362052203048599795&theme=dark" allowtransparency="true" frameborder="0" sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"></iframe>
         <a href="https://discord.gg/6jnTFtPwPS" class="join-button">Join Server</a>
-      </div>
-
-      <div id="puatuan-server" class="server-box fade-in-right">
-        <h2>Puatuan's Server</h2>
-        <iframe src="https://discord.com/widget?id=1368507828003934279&theme=dark" allowtransparency="true" frameborder="0" sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"></iframe>
-        <a href="https://discord.gg/invite/DhgUjrErkw" class="join-button">Join Server</a>
-      </div>
-
-      <div id="manifest-server" class="server-box fade-in-left">
-        <h2>Manifest | Lost Voyages</h2>
-        <iframe src="https://discord.com/widget?id=1354620175407907009&theme=dark" allowtransparency="true" frameborder="0" sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"></iframe>
-        <a href="https://discord.gg/t3bVeZV5EQ" class="join-button">Join Server</a>
       </div>
     </div>
   </main>
@@ -118,17 +170,47 @@
   <script>
     const toggleButton = document.getElementById("theme-toggle");
     const body = document.body;
+    const applyButton = document.getElementById("apply-button");
+    const form = document.getElementById("application-form");
+    const container = document.getElementById("server-container");
+    const submitBtn = document.getElementById("submit-btn");
+    const successMsg = document.getElementById("success-msg");
 
-    toggleButton.addEventListener("click", () => {
-      body.classList.toggle("light-mode");
-      toggleButton.textContent = body.classList.contains("light-mode") ? "🌙" : "🌞";
-    });
+    applyButton.onclick = () => form.style.display = form.style.display === 'flex' ? 'none' : 'flex';
+
+    form.onsubmit = function(e) {
+      e.preventDefault();
+
+      const name = document.getElementById("server-name").value;
+      const link = document.getElementById("server-link").value;
+      const widget = document.getElementById("server-widget").value;
+
+      submitBtn.disabled = true;
+      successMsg.style.display = 'block';
+
+      const box = document.createElement("div");
+      box.className = "server-box fade-in-left";
+      box.innerHTML = `
+        <h2>${name}</h2>
+        <iframe src="${widget}" allowtransparency="true" frameborder="0" sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"></iframe>
+        <a href="${link}" class="join-button">Join Server</a>
+      `;
+      container.appendChild(box);
+
+      setTimeout(() => {
+        form.reset();
+        form.style.display = "none";
+        successMsg.style.display = 'none';
+        submitBtn.disabled = false;
+        window.scrollTo({ top: box.offsetTop, behavior: 'smooth' });
+      }, 1500);
+    };
 
     const counter = document.querySelector('.online-counter');
-    let fakeUsers = Math.floor(Math.random() * 90000) + 10000; // random between 10k-100k
+    let fakeUsers = Math.floor(Math.random() * 90000) + 10000;
 
     function updateUsers() {
-      const change = Math.floor(Math.random() * 101); // 0 - 100
+      const change = Math.floor(Math.random() * 101);
       const direction = Math.random() < 0.5 ? -1 : 1;
       let newCount = fakeUsers + (change * direction);
       newCount = Math.min(100000, Math.max(0, newCount));
@@ -136,7 +218,7 @@
       fakeUsers = newCount;
 
       counter.classList.remove('up', 'down');
-      void counter.offsetWidth; // trigger reflow
+      void counter.offsetWidth;
       counter.classList.add(animationClass);
       counter.textContent = `🔵 ${fakeUsers.toLocaleString()} users currently online`;
     }
