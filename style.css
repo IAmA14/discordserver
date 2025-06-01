@@ -11,7 +11,8 @@ body {
   color: #f0f0f0;
   min-height: 100vh;
   line-height: 1.6;
-  background-image: linear-gradient(to bottom right, #0d0d0d, #1a1a1a);
+  background-image: linear-gradient(135deg, #0d0d0d 0%, #1f1f2e 100%);
+  overflow-x: hidden;
 }
 
 /* HEADER & NAV */
@@ -22,6 +23,10 @@ header {
   padding: 1rem 5vw;
   border-bottom: 1px solid #333;
   backdrop-filter: blur(6px);
+  background-color: rgba(0, 0, 0, 0.4);
+  position: sticky;
+  top: 0;
+  z-index: 10;
 }
 
 .logo {
@@ -77,25 +82,29 @@ nav a:hover {
   gap: 40px;
   flex-wrap: wrap;
   padding: 20px;
+  max-width: 1300px;
+  margin: auto;
 }
 
 .server-box {
   display: flex;
   flex-direction: column;
   align-items: center;
-  opacity: 0;
-  background: #1b1b1b;
-  padding: 1rem;
-  border-radius: 12px;
+  background: #1c1c2b;
+  padding: 1.2rem;
+  border-radius: 16px;
   box-shadow: 0 0 20px rgba(0, 170, 255, 0.1);
   animation: fadeIn 1s ease forwards;
   transition: all 0.3s ease;
+  width: 360px;
+  min-height: 550px;
+  opacity: 1;
 }
 
 .server-box:hover {
   transform: scale(1.08);
-  animation: glowBox 1.2s infinite alternate;
-  box-shadow: 0 0 40px rgba(0, 170, 255, 0.5), 0 0 80px rgba(0, 170, 255, 0.3);
+  box-shadow: 0 0 45px rgba(0, 200, 255, 0.6), 0 0 60px rgba(0, 200, 255, 0.3);
+  background: linear-gradient(145deg, #1c1c2b, #22223a);
 }
 
 .server-box:nth-child(2) {
@@ -104,15 +113,16 @@ nav a:hover {
 
 .server-box h2 {
   margin-bottom: 10px;
-  font-size: 1.3rem;
-  color: #00cfff;
+  font-size: 1.4rem;
+  color: #00d4ff;
   text-align: center;
+  text-shadow: 0 0 10px rgba(0, 200, 255, 0.3);
 }
 
 .server-box iframe {
   border-radius: 10px;
   transition: all 0.3s ease;
-  box-shadow: 0 0 15px rgba(0, 162, 255, 0.1);
+  box-shadow: 0 0 15px rgba(0, 162, 255, 0.15);
 }
 
 .server-box iframe:hover {
@@ -128,17 +138,6 @@ nav a:hover {
   to {
     opacity: 1;
     transform: translateY(0);
-  }
-}
-
-@keyframes glowBox {
-  from {
-    box-shadow: 0 0 30px rgba(0, 170, 255, 0.4);
-    transform: scale(1.05);
-  }
-  to {
-    box-shadow: 0 0 60px rgba(0, 200, 255, 0.8), 0 0 80px rgba(0, 170, 255, 0.4);
-    transform: scale(1.08);
   }
 }
 
@@ -167,7 +166,7 @@ nav a:hover {
 }
 
 .exit-popup-content {
-  background: #232323;
+  background: #232b35;
   padding: 2rem;
   border-radius: 16px;
   text-align: center;
@@ -203,4 +202,26 @@ nav a:hover {
 
 .hidden {
   display: none;
+}
+
+@media (max-width: 768px) {
+  .server-box {
+    width: 90%;
+  }
+
+  .page-title {
+    font-size: 2.2rem;
+  }
+
+  .logo {
+    font-size: 1.8rem;
+  }
+
+  header {
+    padding: 1rem 2rem;
+  }
+
+  nav a {
+    margin-left: 15px;
+  }
 }
