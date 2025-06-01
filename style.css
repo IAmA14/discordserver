@@ -24,24 +24,17 @@ header {
   backdrop-filter: blur(6px);
 }
 
-.logo {
-  font-size: 2.2rem;
-  font-weight: 700;
-  color: #00aaff;
-  text-shadow: 0 0 10px rgba(0, 170, 255, 0.5);
-  transition: all 0.3s ease;
+$1
+  transform: scale(1);
+
+
+$1
+  transform: scale(1.1);
 }
 
-/* Activate logo animation when hovering the entire container */
-.server-container:hover ~ header .logo {
-  animation: glowPulse 1.5s infinite alternate;
-  cursor: pointer;
+$1
+  transform: scale(1.1);
 }
-
-@keyframes glowPulse {
-  from {
-    text-shadow: 0 0 10px rgba(0, 170, 255, 0.5);
-  }
   to {
     text-shadow: 0 0 20px rgba(0, 255, 255, 0.8), 0 0 30px rgba(0, 170, 255, 0.6);
   }
@@ -90,9 +83,9 @@ nav a:hover {
   transition: transform 0.3s ease;
 }
 
-.server-box:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 0 30px rgba(0, 170, 255, 0.3);
+$1
+  transform: scale(1.03) translateY(-5px);
+  animation: glowWidget 1.2s infinite alternate;
 }
 
 .server-box:nth-child(2) {
@@ -117,7 +110,16 @@ nav a:hover {
   box-shadow: 0 0 25px rgba(0, 162, 255, 0.6);
 }
 
-/* ANIMATIONS */
+@keyframes glowWidget {
+  from {
+    box-shadow: 0 0 20px rgba(0, 170, 255, 0.2);
+  }
+  to {
+    box-shadow: 0 0 35px rgba(0, 170, 255, 0.6), 0 0 15px rgba(0, 170, 255, 0.4);
+  }
+}
+
+$1
 @keyframes fadeIn {
   from {
     opacity: 0;
