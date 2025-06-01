@@ -39,8 +39,12 @@
     }
 
     .logo {
-      font-size: 2rem;
       z-index: 2;
+    }
+
+    .logo img {
+      height: 40px;
+      width: auto;
     }
 
     nav {
@@ -165,8 +169,8 @@
     }
 
     @media (max-width: 600px) {
-      .logo {
-        font-size: 1.5rem;
+      .logo img {
+        height: 30px;
       }
 
       nav a {
@@ -188,7 +192,9 @@
   <button id="theme-toggle" title="Toggle Theme">🌞</button>
 
   <header>
-    <h1 class="logo">PTN</h1>
+    <div class="logo">
+      <img src="/mnt/data/f1fb6fc2-5e56-4b70-9303-7153db74b29c.png" alt="Collaborators Logo">
+    </div>
     <nav>
       <a href="index.html">Home</a>
     </nav>
