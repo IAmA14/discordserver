@@ -26,9 +26,9 @@ body.light-mode {
 /* CUSTOM CURSOR IMAGE */
 .custom-cursor {
   position: fixed;
-  width: 32px;
-  height: 32px;
-  background: url('https://cdn.custom-cursor.com/packs/2122/thumbnails/pack2747.png') no-repeat center center;
+  width: 48px;
+  height: 48px;
+  background: url('https://i.imgur.com/9ITkqUl.png') no-repeat center center;
   background-size: contain;
   pointer-events: none;
   z-index: 9999;
@@ -37,7 +37,8 @@ body.light-mode {
 }
 
 .cursor-click {
-  background-position: right center;
+  background: url('https://i.imgur.com/kzEgt3d.png') no-repeat center center;
+  background-size: contain;
 }
 
 .cursor-trail {
