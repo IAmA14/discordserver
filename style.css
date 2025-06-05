@@ -84,16 +84,15 @@ main {
 .server-container {
   display: flex;
   flex-direction: row;
-  flex-wrap: nowrap; /* keep everything in one line */
-  overflow-x: auto;   /* enables scroll if screen too narrow */
+  flex-wrap: nowrap; /* Prevents wrapping to a new line */
+  justify-content: center;
   gap: 20px;
   padding: 20px;
-  justify-content: flex-start;
 }
 
 .server-box {
+  flex: 0 0 auto; /* Prevents shrinking */
   width: 350px;
-  flex-shrink: 0; /* prevents box from shrinking */
   background: rgba(0, 225, 255, 0.05);
   border-radius: 12px;
   padding: 10px;
