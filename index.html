@@ -135,11 +135,6 @@
   <main>
     <h1 class="page-title">Our Servers/Collaborators</h1>
     <div class="server-container" id="server-container">
-      <div id="zautuan-server" class="server-box fade-in-left">
-        <h2>Zautuan's Server</h2>
-        <iframe src="https://discord.com/widget?id=1362052203048599795&theme=dark" allowtransparency="true" frameborder="0" sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"></iframe>
-        <a href="https://discord.gg/6jnTFtPwPS" class="join-button">Join Server</a>
-      </div>
       <div class="server-box fade-in-left">
         <h2>Puatuan's Server</h2>
         <iframe src="https://discord.com/widget?id=1368507828003934279&theme=dark" allowtransparency="true" frameborder="0" sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"></iframe>
@@ -157,20 +152,17 @@
     const toggleButton = document.getElementById("theme-toggle");
     const body = document.body;
 
-    // Set initial theme based on the emoji in the button
     if (toggleButton.textContent.trim() === "🌞") {
-      body.classList.remove("light-mode"); // dark theme
+      body.classList.remove("light-mode");
     } else if (toggleButton.textContent.trim() === "🌙") {
       body.classList.add("light-mode");
     }
 
     toggleButton.addEventListener("click", () => {
       if (toggleButton.textContent.trim() === "🌞") {
-        // Sun emoji means switch to dark theme
         body.classList.remove("light-mode");
         toggleButton.textContent = "🌙";
       } else if (toggleButton.textContent.trim() === "🌙") {
-        // Moon emoji means switch to light theme
         body.classList.add("light-mode");
         toggleButton.textContent = "🌞";
       }
@@ -188,7 +180,7 @@
       fakeUsers = newCount;
 
       counter.classList.remove('up', 'down');
-      void counter.offsetWidth; // trigger reflow for animation restart
+      void counter.offsetWidth;
       counter.classList.add(animationClass);
       counter.textContent = `🔵 ${fakeUsers.toLocaleString()} users currently online`;
     }
