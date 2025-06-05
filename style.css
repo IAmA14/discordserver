@@ -83,32 +83,24 @@ main {
 /* Server container */
 .server-container {
   display: flex;
-  justify-content: center;
-  gap: 55px;
-  flex-wrap: nowrap;
-  margin: 0 auto;
-  max-width: 1040px;
+  flex-direction: row;
+  flex-wrap: nowrap; /* keep everything in one line */
+  overflow-x: auto;   /* enables scroll if screen too narrow */
+  gap: 20px;
+  padding: 20px;
+  justify-content: flex-start;
 }
 
-/* Server box */
 .server-box {
-  background: rgba(1, 22, 33, 0.85);
-  border-radius: 20px;
-  box-shadow:
-    0 0 30px rgba(0, 229, 255, 0.5),
-    inset 0 0 10px rgba(0, 162, 255, 0.3);
-  padding: 25px;
-  width: 400px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  color: #a3f0ff;
-  transition: box-shadow 0.35s cubic-bezier(0.4, 0, 0.2, 1), transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-  cursor: default;
-  backdrop-filter: saturate(180%) blur(15px);
-  border: 1.5px solid rgba(0, 229, 255, 0.25);
-  overflow: hidden;
+  width: 350px;
+  flex-shrink: 0; /* prevents box from shrinking */
+  background: rgba(0, 225, 255, 0.05);
+  border-radius: 12px;
+  padding: 10px;
+  text-align: center;
+  box-shadow: 0 0 14px rgba(0, 229, 255, 0.2);
 }
+
 
 .server-box:hover {
   box-shadow:
