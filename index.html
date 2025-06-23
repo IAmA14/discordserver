@@ -4,15 +4,61 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <title>Collaborators</title>
-  <link rel="stylesheet" href="style.css">
+
   <style>
+    :root {
+      --bg-dark: oklch(0.1 0.1 258);
+      --bg: oklch(0.15 0.1 258);
+      --bg-light: oklch(0.2 0.1 258);
+      --text: oklch(0.96 0.1 258);
+      --text-muted: oklch(0.76 0.1 258);
+      --highlight: oklch(0.5 0.2 258);
+      --border: oklch(0.4 0.2 258);
+      --border-muted: oklch(0.3 0.2 258);
+      --primary: oklch(0.76 0.2 258);
+      --secondary: oklch(0.76 0.2 78);
+      --danger: oklch(0.7 0.2 30);
+      --warning: oklch(0.7 0.2 100);
+      --success: oklch(0.7 0.2 160);
+      --info: oklch(0.7 0.2 260);
+    }
+
+    body.light {
+      --bg-dark: oklch(0.92 0.1 258);
+      --bg: oklch(0.96 0.1 258);
+      --bg-light: oklch(1 0.1 258);
+      --text: oklch(0.15 0.2 258);
+      --text-muted: oklch(0.4 0.2 258);
+      --highlight: oklch(1 0.2 258);
+      --border: oklch(0.6 0.2 258);
+      --border-muted: oklch(0.7 0.2 258);
+      --primary: oklch(0.4 0.2 258);
+      --secondary: oklch(0.4 0.2 78);
+      --danger: oklch(0.5 0.2 30);
+      --warning: oklch(0.5 0.2 100);
+      --success: oklch(0.5 0.2 160);
+      --info: oklch(0.5 0.2 260);
+    }
+
+    body {
+      background: var(--bg-dark, #010a13);
+      color: var(--primary, #00e1ff);
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
     .online-counter {
       position: fixed;
       top: 10px;
       left: 50%;
       transform: translateX(-50%);
       background: rgba(0, 225, 255, 0.1);
-      color: #00e1ff;
+      color: var(--primary);
       font-weight: bold;
       padding: 6px 14px;
       border-radius: 10px;
@@ -44,12 +90,12 @@
       top: 60px;
       left: 20px;
       background: rgba(0, 225, 255, 0.15);
-      border: 2px solid #00e1ff;
+      border: 2px solid var(--primary);
       border-radius: 50%;
       width: 45px;
       height: 45px;
       font-size: 1.2rem;
-      color: #00e1ff;
+      color: var(--primary);
       cursor: pointer;
       box-shadow: 0 0 12px rgba(0, 229, 255, 0.4);
       backdrop-filter: blur(6px);
@@ -63,34 +109,63 @@
     }
 
     header {
-      position: relative;
-      padding-top: 50px;
+      padding: 40px 60px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: var(--bg);
+      box-shadow: 0 0 30px var(--primary);
+      backdrop-filter: saturate(180%) blur(12px);
+      position: sticky;
+      top: 0;
+      z-index: 100;
     }
 
-    iframe {
-      width: 100%;
-      height: 500px;
-      border-radius: 10px;
-      transition: all 0.3s ease;
-      box-shadow: 0 0 20px rgba(0, 162, 255, 0.15);
+    .logo {
+      font-weight: 900;
+      font-size: 2rem;
+      letter-spacing: 3px;
+      text-shadow:
+        0 0 8px var(--primary),
+        0 0 20px var(--secondary),
+        0 0 30px var(--secondary),
+        0 0 40px var(--primary);
+      color: var(--primary);
+      user-select: none;
     }
 
-    iframe:hover {
-      transform: scale(1.03);
-      box-shadow: 0 0 25px rgba(0, 162, 255, 0.6);
+    nav a {
+      color: var(--primary);
+      font-weight: 700;
+      text-decoration: none;
+      font-size: 1.1rem;
+      text-shadow:
+        0 0 4px var(--primary),
+        0 0 10px var(--secondary);
+      transition: color 0.3s ease;
+      user-select: none;
     }
 
-    #apply-button {
-      position: absolute;
-      top: 10px;
-      right: 20px;
-      background-color: #00e1ff;
-      color: #000;
-      padding: 6px 12px;
-      font-weight: bold;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
+    nav a:hover {
+      color: var(--secondary);
+      text-shadow:
+        0 0 10px var(--secondary),
+        0 0 25px var(--primary);
+    }
+
+    .page-title {
+      font-size: 2.8rem;
+      margin: 40px 0;
+      text-align: center;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--primary);
+      text-shadow:
+        0 0 15px var(--primary),
+        0 0 30px var(--secondary),
+        0 0 45px var(--secondary);
+      user-select: none;
     }
 
     .server-container {
@@ -103,17 +178,36 @@
 
     .server-box {
       width: 350px;
-      background: rgba(0, 225, 255, 0.05);
+      background: var(--bg-light);
       border-radius: 12px;
       padding: 10px;
       text-align: center;
-      box-shadow: 0 0 14px rgba(0, 229, 255, 0.2);
+      box-shadow: 0 0 14px var(--border-muted);
+      color: var(--text-muted);
+    }
+
+    .server-box h2 {
+      color: var(--primary);
+    }
+
+    iframe {
+      width: 100%;
+      height: 500px;
+      border-radius: 10px;
+      transition: all 0.3s ease;
+      box-shadow: 0 0 20px var(--border-muted);
+      border: none;
+    }
+
+    iframe:hover {
+      transform: scale(1.03);
+      box-shadow: 0 0 25px var(--border);
     }
 
     .join-button {
       display: inline-block;
       margin-top: 10px;
-      background-color: #00e1ff;
+      background-color: var(--primary);
       color: #000;
       padding: 6px 12px;
       font-weight: bold;
@@ -121,30 +215,10 @@
       border-radius: 6px;
     }
 
-    body.light-mode {
-      background-color: #f0f0f0;
-      color: #222;
-    }
-
-    body.light-mode .online-counter {
-      background: rgba(0, 162, 255, 0.1);
-      color: #007acc;
-      box-shadow: 0 4px 12px rgba(0, 122, 204, 0.3);
-    }
-
-    body.light-mode #theme-toggle {
-      background: rgba(0, 122, 204, 0.15);
-      border-color: #007acc;
-      color: #007acc;
-      box-shadow: 0 0 12px rgba(0, 122, 204, 0.4);
-    }
-
-    body.light-mode iframe {
-      box-shadow: 0 0 20px rgba(0, 122, 204, 0.15);
-    }
-
-    body.light-mode iframe:hover {
-      box-shadow: 0 0 25px rgba(0, 122, 204, 0.6);
+    @media (max-width: 420px) {
+      .server-box {
+        width: 100%;
+      }
     }
   </style>
 </head>
@@ -157,24 +231,24 @@
     </nav>
   </header>
 
-  <button id="theme-toggle" title="Toggle Theme">🌞</button>
+  <button id="theme-toggle" title="Toggle Theme">🌙</button>
 
   <main>
-    <h1 class="page-title">Our Servers/Collaborators</h1>
+    <h1 class="page-title">Our Servers / Collaborators</h1>
     <div class="server-container" id="server-container">
-      <div class="server-box fade-in-left">
+      <div class="server-box">
         <h2>Puatuan's Server</h2>
-        <iframe src="https://discord.com/widget?id=1368507828003934279&theme=dark" allowtransparency="true" frameborder="0" sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"></iframe>
+        <iframe src="https://discord.com/widget?id=1368507828003934279&theme=dark" allowtransparency="true" sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"></iframe>
         <a href="https://discord.gg/invite/DhgUjrErkw" class="join-button">Join Server</a>
       </div>
-      <div class="server-box fade-in-left">
+      <div class="server-box">
         <h2>Manifest | Lost Voyages</h2>
-        <iframe src="https://discord.com/widget?id=1354620175407907009&theme=dark" allowtransparency="true" frameborder="0" sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"></iframe>
+        <iframe src="https://discord.com/widget?id=1354620175407907009&theme=dark" allowtransparency="true" sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"></iframe>
         <a href="https://discord.gg/t3bVeZV5EQ" class="join-button">Join Server</a>
       </div>
-      <div class="server-box fade-in-left">
+      <div class="server-box">
         <h2>Donators Studio</h2>
-        <iframe src="https://discordapp.com/widget?id=1362677636387569674&theme=dark" allowtransparency="true" frameborder="0" sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"></iframe>
+        <iframe src="https://discordapp.com/widget?id=1362677636387569674&theme=dark" allowtransparency="true" sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"></iframe>
         <a href="https://discord.gg/TE7w8areCY" class="join-button">Join Server</a>
       </div>
     </div>
@@ -184,20 +258,12 @@
     const toggleButton = document.getElementById("theme-toggle");
     const body = document.body;
 
-    if (toggleButton.textContent.trim() === "🌞") {
-      body.classList.remove("light-mode");
-    } else if (toggleButton.textContent.trim() === "🌙") {
-      body.classList.add("light-mode");
-    }
+    // Set initial theme
+    toggleButton.textContent = body.classList.contains("light") ? "🌞" : "🌙";
 
     toggleButton.addEventListener("click", () => {
-      if (toggleButton.textContent.trim() === "🌞") {
-        body.classList.remove("light-mode");
-        toggleButton.textContent = "🌙";
-      } else if (toggleButton.textContent.trim() === "🌙") {
-        body.classList.add("light-mode");
-        toggleButton.textContent = "🌞";
-      }
+      body.classList.toggle("light");
+      toggleButton.textContent = body.classList.contains("light") ? "🌞" : "🌙";
     });
 
     const counter = document.querySelector('.online-counter');
