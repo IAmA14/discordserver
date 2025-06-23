@@ -1,7 +1,43 @@
-/* Body & base */
+:root {
+  /* DARK THEME */
+  --bg-dark: oklch(0.1 0.1 258);
+  --bg: oklch(0.15 0.1 258);
+  --bg-light: oklch(0.2 0.1 258);
+  --text: oklch(0.96 0.1 258);
+  --text-muted: oklch(0.76 0.1 258);
+  --highlight: oklch(0.5 0.2 258);
+  --border: oklch(0.4 0.2 258);
+  --border-muted: oklch(0.3 0.2 258);
+  --primary: oklch(0.76 0.2 258);
+  --secondary: oklch(0.76 0.2 78);
+  --danger: oklch(0.7 0.2 30);
+  --warning: oklch(0.7 0.2 100);
+  --success: oklch(0.7 0.2 160);
+  --info: oklch(0.7 0.2 260);
+}
+
+/* Light Mode Support */
+body.light {
+  --bg-dark: oklch(0.92 0.1 258);
+  --bg: oklch(0.96 0.1 258);
+  --bg-light: oklch(1 0.1 258);
+  --text: oklch(0.15 0.2 258);
+  --text-muted: oklch(0.4 0.2 258);
+  --highlight: oklch(1 0.2 258);
+  --border: oklch(0.6 0.2 258);
+  --border-muted: oklch(0.7 0.2 258);
+  --primary: oklch(0.4 0.2 258);
+  --secondary: oklch(0.4 0.2 78);
+  --danger: oklch(0.5 0.2 30);
+  --warning: oklch(0.5 0.2 100);
+  --success: oklch(0.5 0.2 160);
+  --info: oklch(0.5 0.2 260);
+}
+
+/* Base styles */
 body {
-  background: #010a13;
-  color: #00e1ff;
+  background: var(--bg-dark, #010a13);
+  color: var(--primary, #00e1ff);
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   margin: 0;
   padding: 0;
@@ -11,14 +47,13 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Header */
 header {
   padding: 40px 60px 20px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: rgba(1, 22, 33, 0.9);
-  box-shadow: 0 0 30px rgba(0, 229, 255, 0.5);
+  background: var(--bg, rgba(1, 22, 33, 0.9));
+  box-shadow: 0 0 30px var(--primary, rgba(0, 229, 255, 0.5));
   backdrop-filter: saturate(180%) blur(12px);
   position: sticky;
   top: 0;
@@ -30,41 +65,39 @@ header {
   font-size: 2rem;
   letter-spacing: 3px;
   text-shadow:
-    0 0 8px #00e1ff,
-    0 0 20px #00b8d9,
-    0 0 30px #00b8d9,
-    0 0 40px #00e1ff;
-  color: #00e1ff;
+    0 0 8px var(--primary, #00e1ff),
+    0 0 20px var(--secondary, #00b8d9),
+    0 0 30px var(--secondary, #00b8d9),
+    0 0 40px var(--primary, #00e1ff);
+  color: var(--primary, #00e1ff);
   user-select: none;
 }
 
 nav a {
-  color: #00e1ff;
+  color: var(--primary, #00e1ff);
   font-weight: 700;
   text-decoration: none;
   font-size: 1.1rem;
   text-shadow:
-    0 0 4px #00e1ff,
-    0 0 10px #00b8d9;
+    0 0 4px var(--primary, #00e1ff),
+    0 0 10px var(--secondary, #00b8d9);
   transition: color 0.3s ease;
   user-select: none;
 }
 
 nav a:hover {
-  color: #00b8d9;
+  color: var(--secondary, #00b8d9);
   text-shadow:
-    0 0 10px #00b8d9,
-    0 0 25px #00e1ff;
+    0 0 10px var(--secondary, #00b8d9),
+    0 0 25px var(--primary, #00e1ff);
 }
 
-/* Main */
 main {
   max-width: 1040px;
   margin: 40px auto 80px;
   padding: 0 25px;
 }
 
-/* Page title */
 .page-title {
   font-size: 2.8rem;
   margin-bottom: 40px;
@@ -72,15 +105,14 @@ main {
   font-weight: 900;
   text-transform: uppercase;
   letter-spacing: 2px;
-  color: #00e1ff;
+  color: var(--primary, #00e1ff);
   text-shadow:
-    0 0 15px #00e1ff,
-    0 0 30px #00b8d9,
-    0 0 45px #00b8d9;
+    0 0 15px var(--primary, #00e1ff),
+    0 0 30px var(--secondary, #00b8d9),
+    0 0 45px var(--secondary, #00b8d9);
   user-select: none;
 }
 
-/* Server container */
 .server-container {
   display: flex;
   justify-content: center;
@@ -90,69 +122,63 @@ main {
   max-width: 1040px;
 }
 
-/* Server box */
 .server-box {
-  background: rgba(1, 22, 33, 0.85);
+  background: var(--bg, rgba(1, 22, 33, 0.85));
   border-radius: 20px;
   box-shadow:
-    0 0 30px rgba(0, 229, 255, 0.5),
-    inset 0 0 10px rgba(0, 162, 255, 0.3);
+    0 0 30px var(--primary, rgba(0, 229, 255, 0.5)),
+    inset 0 0 10px var(--secondary, rgba(0, 162, 255, 0.3));
   padding: 25px;
   width: 400px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  color: #a3f0ff;
+  color: var(--text-muted, #a3f0ff);
   transition: box-shadow 0.35s cubic-bezier(0.4, 0, 0.2, 1), transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
   cursor: default;
   backdrop-filter: saturate(180%) blur(15px);
-  border: 1.5px solid rgba(0, 229, 255, 0.25);
+  border: 1.5px solid var(--border-muted, rgba(0, 229, 255, 0.25));
   overflow: hidden;
 }
 
 .server-box:hover {
   box-shadow:
-    0 0 60px #00e1ff,
-    inset 0 0 40px #00b8d9,
-    0 0 15px #00b8d9;
+    0 0 60px var(--primary, #00e1ff),
+    inset 0 0 40px var(--secondary, #00b8d9),
+    0 0 15px var(--secondary, #00b8d9);
   transform: scale(1.07);
   color: #fff;
-  border-color: #00e1ff;
+  border-color: var(--primary, #00e1ff);
 }
 
-/* Server title */
 .server-box h2 {
   margin-bottom: 20px;
   font-size: 1.45rem;
   text-align: center;
   text-shadow:
-    0 0 12px #00e1ff,
-    0 0 25px #00b8d9;
-  color: #00e1ff;
+    0 0 12px var(--primary, #00e1ff),
+    0 0 25px var(--secondary, #00b8d9);
+  color: var(--primary, #00e1ff);
   user-select: none;
 }
 
-/* Discord widget iframe */
 iframe {
   border-radius: 20px;
   width: 100%;
   height: 350px;
   border: none;
-  box-shadow:
-    inset 0 0 30px rgba(0, 162, 255, 0.5);
+  box-shadow: inset 0 0 30px var(--secondary, rgba(0, 162, 255, 0.5));
   transition: box-shadow 0.3s ease;
-  overflow-y: scroll !important; /* ensure scroll on widget */
+  overflow-y: scroll !important;
 }
 
 iframe:hover {
-  box-shadow:
-    inset 0 0 50px #00e1ff;
+  box-shadow: inset 0 0 50px var(--primary, #00e1ff);
 }
 
-/* Join button */
 .join-button {
   margin-top: 25px;
-  background: linear-gradient(135deg, #00e1ff 0%, #00b8d9 100%);
+  background: linear-gradient(135deg, var(--primary, #00e1ff) 0%, var(--secondary, #00b8d9) 100%);
   border: none;
   padding: 15px 40px;
   font-weight: 900;
@@ -161,8 +187,8 @@ iframe:hover {
   border-radius: 35px;
   cursor: pointer;
   box-shadow:
-    0 0 30px #00e1ff,
-    0 0 60px #00b8d9;
+    0 0 30px var(--primary, #00e1ff),
+    0 0 60px var(--secondary, #00b8d9);
   text-decoration: none;
   text-align: center;
   transition:
@@ -173,14 +199,13 @@ iframe:hover {
 }
 
 .join-button:hover {
-  background: linear-gradient(135deg, #00b8d9 0%, #00e1ff 100%);
+  background: linear-gradient(135deg, var(--secondary, #00b8d9) 0%, var(--primary, #00e1ff) 100%);
   box-shadow:
-    0 0 50px #00e1ff,
-    0 0 90px #00b8d9;
+    0 0 50px var(--primary, #00e1ff),
+    0 0 90px var(--secondary, #00b8d9);
   transform: scale(1.05);
 }
 
-/* Responsive */
 @media (max-width: 1024px) {
   .server-container {
     flex-wrap: wrap;
